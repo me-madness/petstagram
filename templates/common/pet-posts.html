@@ -56,19 +56,15 @@
             <p class="likes">203 likes</p>
         </a>
 
-        <!-- tagged pets -->
-        <a href="pet profile">
-            <p class="message">
-                <b>Sasho</b>
-            </p>
-        </a>
-        <a href="pet profile">
-            <p class="message">
-                <b>Some other fish</b>
-            </p>
-        </a>
-        <!--  -->
-
+        {% for pet in photo.tagged_pets.all %}
+        
+            <a href="{% url 'pet-details' "username" pet.slug %}">
+               <p class="message">
+                   <b>{{ pet.name }}</b>
+               </p>
+            </a>
+        {% endfor %}
+    
         <a href="{% url 'photo-details' photo.pk %}">
             <h4 class="details">See details</h4>
         </a>
@@ -89,7 +85,7 @@
     </div>
 </div>
 <!-- End  First Pet Photo Post -->
-            <div class="card">
+<div class="card">
     <div class="top">
         <!-- User Details and image location -->
         <div class="userDetails">
